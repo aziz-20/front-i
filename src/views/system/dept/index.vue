@@ -242,7 +242,7 @@ export default {
       // listDept().then(response => {
       //   this.deptOptions = this.handleTree(response.data, "deptId");
       // });
-      // this.deptOptions = handleTree(this.res, "deptId");
+      this.deptOptions = handleTree(this.res, "deptId");
     },
     handleUpdate(row) {
       this.reset();
@@ -285,21 +285,18 @@ export default {
           if (this.form.deptId != undefined) {
             console.log(this.form)
             this.open = true;
-            this.$http.dept.updateDep(this.form).then(response => {
+            this.$http.dept.updateDept(this.form).then(response => {
               this.$modal.msgSuccess("updated");
               this.open = false;
               this.getList();
-            }).catch(error => {
-              this.$modal.msgError("cant add new");
-              this.open = false;
-              this.getList();})
+            });
           } else {
             this.$http.dept.addDept(this.form).then(response => {
-              this.$modal.msgSuccess("new added");
+              this.$modal.msgSuccess("new");
               this.open = false;
               this.getList();
             }).catch(error => {
-              this.$modal.msgError("cant add new");
+              this.$modal.msgError("新增失败");
               this.open = false;
               this.getList();
             })
