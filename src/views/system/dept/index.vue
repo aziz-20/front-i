@@ -292,7 +292,7 @@ export default {
             });
           } else {
             this.$http.dept.addDept(this.form).then(response => {
-              this.$modal.msgSuccess("new");
+              this.$modal.msgSuccess("new added");
               this.open = false;
               this.getList();
             }).catch(error => {
